@@ -22,7 +22,6 @@ app.use(express.static('public'));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 import { default as userApiRoutes } from './routes/users-api.js';
-import { default as usersRoutes } from './routes/users.js';
 import { default as widgetApiRoutes } from './routes/widgets-api.js';
 
 // Mount all resource routes
@@ -30,7 +29,6 @@ import { default as widgetApiRoutes } from './routes/widgets-api.js';
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
-app.use('/users', usersRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -38,7 +36,7 @@ app.use('/users', usersRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.json({msg: 'API Home'})
 });
 
 app.listen(PORT, () => {
